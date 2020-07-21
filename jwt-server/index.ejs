@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="JWT very lightweight DECODER"/>
+    <title>JWT very lightweight DECODER</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/styles.min.css?cb=1595356574645">
+</head>
+
+<body>
+
+<div class="container is-flex">
+
+    <header class="is-flex">
+        <div>
+            <span class="has-text-weight-bold">JWT </span> very lightweight <span
+                    class="has-text-weight-bold"> DECODER</span>
+            <span class="is-size-7">(using unzlib payload)</span>
+        </div>
+    </header>
+
+    <section class="is-flex spacer pt-4 pb-4">
+        <div class="columns spacer">
+            <div class="column is-half">
+                <p class="mb-2 is-size-5">Paste token here</p>
+                <textarea class="textarea" placeholder="e.g. Hello world" id="token"></textarea>
+                <div class="validation">
+                    <p class="help is-danger" id="errorText"></p>
+                </div>
+                <button id="submit" class="button is-link mt-5">Submit</button>
+            </div>
+            <div class="column is-half">
+                <p class="mb-2 is-size-5">Result</p>
+                <textarea class="textarea" placeholder="e.g. Hello world" id="result"></textarea>
+            </div>
+        </div>
+    </section>
+
+    <footer class="is-flex has-text-centered is-size-7">
+        Václav Rašendorfer
+    </footer>
+
+</div>
+<script>
+    var domElements = {
+        button: document.getElementById('submit'),
+        tokenTextarea: document.getElementById('token'),
+        resultTextarea: document.getElementById('result'),
+        errorText: document.getElementById('errorText'),
+        setError: function (text) {
+            this.errorText.innerHTML = text;
+            this.tokenTextarea.classList.add('is-danger');
+            this.resultTextarea.value = '';
+        },
+        setResult: function (result) {
+            this.errorText.innerHTML = '';
+            this.tokenTextarea.classList.remove('is-danger');
+            this.resultTextarea.value = result;
+        }
+    }
+    console.log(domElements);
+
+    (function (domElements) {
+        domElements.button.addEventListener('click', function () {
+            fetch("/decode-token", {
+                headers: {'Content-Type': 'application/json'},
+                method: "POST",
+                body: JSON.stringify({token: domElements.tokenTextarea.value})
+            })
+                .then(response => response.json())
+                .then(res => {
+                    if (res.hasOwnProperty('decodedToken')) {
+                        const jsonResult = JSON.parse(res.decodedToken);
+                        const pretty = JSON.stringify(jsonResult, undefined, 4);
+                        domElements.setResult(pretty);
+                    }
+                    if (res.hasOwnProperty('error')) {
+                        domElements.setError(res.error);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                    domElements.setError(res.error);
+                });
+        });
+    })(domElements);
+</script>
+</body>
+
+</html>
