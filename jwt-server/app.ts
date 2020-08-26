@@ -1,9 +1,9 @@
 import { Application, Router, send } from "https://deno.land/x/oak/mod.ts";
 import { renderFileToString } from 'https://deno.land/x/dejs@0.8.0/mod.ts';
 import { parse } from "https://deno.land/std/flags/mod.ts";
+import { oakCors } from "https://deno.land/x/cors/mod.ts";
 
 import { decodeTokenPayload, Token } from "./decoder.ts";
-
 
 const {args, exit} = Deno;
 const DEFAULT_PORT = 8000;
@@ -48,6 +48,11 @@ router.post('/decode-token', async (ctx) => {
     }
 })
 
+app.use(
+    oakCors({
+      origin: "*"
+    }),
+);
 app.use(router.routes());
 app.use(router.allowedMethods());
 

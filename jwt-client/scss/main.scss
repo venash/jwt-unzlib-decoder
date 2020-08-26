@@ -1,0 +1,49 @@
+@import './bulma/bulma';
+@import './abstracts/all';
+@import './base/all';
+@import './pages/all';
+
+html, body {
+  height: 100%;
+  overflow: auto;
+}
+
+.container {
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  height: 3rem;
+  min-height: 3rem;
+  border-bottom: 1px solid #a8a8a8;
+  align-items: center;
+}
+
+section {
+  flex-direction: column;
+  overflow: auto;
+  .textarea {
+    height: calc(100% - 110px);
+  }
+}
+
+footer {
+  height: 2rem;
+  min-height: 2rem;
+  border-top: 1px solid #a8a8a8;
+  align-items: center;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.validation {
+  position: relative;
+  .help {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

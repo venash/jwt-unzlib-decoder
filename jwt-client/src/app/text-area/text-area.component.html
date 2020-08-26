@@ -1,0 +1,17 @@
+<div class="mb-2 is-size-5">
+
+  <p>
+    {{title}}
+  </p>
+
+  <textarea class="textarea" [readOnly]="isReadonly" #tokenText
+    [placeholder]="!isReadonly ? placeholderText : ''" (input)="updateToken(tokenText.value)"></textarea>
+
+  <!--
+  <div class="validation">
+    <p class="help is-danger">
+      This field is required
+  </p>
+  </div>-->
+
+</div>
