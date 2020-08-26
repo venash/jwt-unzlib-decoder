@@ -1,9 +1,9 @@
-<div class="row">
-    <div class="column">
-        <button class="button is-link mt-3" (click)="submit()">Submit</button>
-    </div>
-    <div class="column">
-        <label>Lala</label>
-    </div>
+<div class="submit-div mt-3">
+    <button class="button is-link mr-5" (click)="submit()">Submit</button>
+    
+    <form class="submit-form">    
+        <input class="mr-3 mb-2" type="checkbox" [(ngModel)]='isCopied'>
+        <label class="is-size-5 pr-2">Copied from response?</label>
+      </form>
     
 </div>
