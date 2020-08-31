@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FOOTER_TEXT } from '../utils';
+import { FOOTER_TEXT } from '../../utils';
 
 @Component({
   selector: 'app-footer',

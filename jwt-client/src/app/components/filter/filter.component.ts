@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PLACEHOLDER_TEXT } from '../utils';
+import { PLACEHOLDER_TEXT } from '../../utils';
 
 @Component({
   selector: 'app-filter',

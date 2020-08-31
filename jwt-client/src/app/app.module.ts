@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ContentComponent } from './content/content.component';
-import { FilterComponent } from './filter/filter.component';
-import { SubmitComponent } from './submit/submit.component';
-import { TextAreaComponent } from './text-area/text-area.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ContentComponent } from './components/content/content.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { SubmitComponent } from './components/submit/submit.component';
+import { TextAreaComponent } from './components/text-area/text-area.component';
 
 @NgModule({
   declarations: [

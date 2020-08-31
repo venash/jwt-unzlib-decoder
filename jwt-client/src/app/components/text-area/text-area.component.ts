@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { PLACEHOLDER_TEXT } from '../utils';
-import { TokenService } from '../token.service';
+import { PLACEHOLDER_TEXT } from '../../utils';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'app-text-area',

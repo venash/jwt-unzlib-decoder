@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { TITLE_PASTE_TOKEN, TITLE_RESULT } from '../utils';
-import { TokenService } from '../services/token/token.service';
+import { TITLE_PASTE_TOKEN, TITLE_RESULT } from '../../utils';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'app-content',
