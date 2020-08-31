@@ -13,8 +13,6 @@ export class ContentComponent implements OnInit {
   readonly titlePasteTokenComponent = TITLE_PASTE_TOKEN;
   readonly titleResultComponent = TITLE_RESULT;
 
-  parsedToken: string;
-
   constructor(
     private tokenService: TokenService
   ) { }
@@ -23,7 +21,7 @@ export class ContentComponent implements OnInit {
   }
 
   submitButtonClicked() {
-    this.parsedToken = this.tokenService.parsedToken();
+    this.tokenService.parseToken();
   }
 
 }

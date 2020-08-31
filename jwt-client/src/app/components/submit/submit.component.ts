@@ -7,8 +7,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SubmitComponent implements OnInit {
 
-  isCopied: boolean;
-
   @Output() submitClicked = new EventEmitter<any>();
 
   constructor() { }

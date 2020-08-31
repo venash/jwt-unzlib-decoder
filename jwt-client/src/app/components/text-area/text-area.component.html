@@ -4,14 +4,10 @@
     {{title}}
   </p>
 
-  <textarea class="textarea" [readOnly]="isReadonly" #tokenText
-    [placeholder]="!isReadonly ? placeholderText : ''" (input)="updateToken(tokenText.value)"></textarea>
+  <textarea *ngIf="isReadonly" class="textarea" [readOnly]="isReadonly"
+    [placeholder]="!isReadonly ? placeholderText : ''">{{decodedToken | json}}</textarea>
 
-  <!--
-  <div class="validation">
-    <p class="help is-danger">
-      This field is required
-  </p>
-  </div>-->
+  <textarea *ngIf="!isReadonly" class="textarea" [readOnly]="isReadonly" #tokenText
+    [placeholder]="!isReadonly ? placeholderText : ''" (input)="updateToken(tokenText.value)"></textarea>
 
 </div>

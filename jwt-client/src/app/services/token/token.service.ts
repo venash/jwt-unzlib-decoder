@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const serverPath = 'http://localhost:8000/decode-token';
+import { SERVER_PATH } from '../../utils';
 
 @Injectable({
   providedIn: 'root',
@@ -10,30 +10,36 @@ export class TokenService {
   private tokenData: string;
   private parsedTokenData: any;
 
+  @Output()
+  tokenEmitter: EventEmitter<string> = new EventEmitter();
+
   constructor(private httpService: HttpClient) {}
 
   getTokenData(): string {
     return this.tokenData;
   }
 
-  setTokenData(data: string) {
+  setTokenData(data: string): void {
     this.tokenData = data;
   }
 
-  parsedToken(): string {
+  parseToken(): void {
     const tokenJson = JSON.stringify({
       token: this.tokenData,
     });
 
-    console.log(tokenJson);
-
-    this.httpService.post<any>(serverPath, tokenJson).subscribe({
-      next: (data) => (this.parsedTokenData = data),
-      error: (error) => console.log(error),
+    this.httpService.post<any>(SERVER_PATH, tokenJson).subscribe({
+      next: (data: any) => {
+        if ('decodedToken' in data) {
+          console.log(data);
+          this.parsedTokenData = JSON.parse(data.decodedToken);
+          this.tokenEmitter.emit(this.parsedTokenData);
+        } else {
+          this.parsedTokenData = data;
+          this.tokenEmitter.emit(this.parsedTokenData);
+        }
+      },
     });
-
-    console.log(this.parsedTokenData);
-
-    return this.parsedTokenData;
   }
+
 }
