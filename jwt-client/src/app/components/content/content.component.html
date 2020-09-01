@@ -1,20 +1,13 @@
-<div class="is-flex spacer pt-4 pb-4">
+<div class="columns is-flex spacer pt-4 pb-4">
 
-  <div class="row spacer">
+  <div class="column is-half">
+    <app-text-area [title]="titlePasteTokenComponent" [isReadonly]="false"></app-text-area>
+    <app-submit (submitClicked)="submitButtonClicked()"></app-submit>
+  </div>
 
-    <div class="column">
-      <app-text-area [title]="titlePasteTokenComponent" [isReadonly]="false"
-        ></app-text-area>
-      <app-submit (submitClicked)="submitButtonClicked()"></app-submit>
-    </div>
-
-    <div class="column">
-      <app-text-area [title]="titleResultComponent" [isReadonly]="true"></app-text-area>
-      <app-filter></app-filter>
-    </div>
-    
+  <div class="column is-half">
+    <app-text-area [title]="titleResultComponent" [isReadonly]="true"></app-text-area>
+    <app-filter></app-filter>
   </div>
 
 </div>
-
-

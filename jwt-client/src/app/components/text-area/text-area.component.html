@@ -1,13 +1,10 @@
-<div class="mb-2 is-size-5">
+<p class="is-size-5 mb-2">
+  {{title}}
+</p>
 
-  <p>
-    {{title}}
-  </p>
+<textarea *ngIf="isReadonly" class="textarea" [readOnly]="isReadonly"
+  [placeholder]="!isReadonly ? placeholderText : ''">{{decodedToken | json}}</textarea>
 
-  <textarea *ngIf="isReadonly" class="textarea" [readOnly]="isReadonly"
-    [placeholder]="!isReadonly ? placeholderText : ''">{{decodedToken | json}}</textarea>
-
-  <textarea *ngIf="!isReadonly" class="textarea" [readOnly]="isReadonly" #tokenText
-    [placeholder]="!isReadonly ? placeholderText : ''" (input)="updateToken(tokenText.value)"></textarea>
-
-</div>
+<textarea *ngIf="!isReadonly" class="textarea" [readOnly]="isReadonly" #tokenText
+  [placeholder]="!isReadonly ? placeholderText : ''" 
+  (input)="updateToken(tokenText.value)"></textarea>
