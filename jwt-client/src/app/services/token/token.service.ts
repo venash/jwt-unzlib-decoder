@@ -7,12 +7,24 @@ import { SERVER_PATH } from '../../utils';
   providedIn: 'root',
 })
 export class TokenService {
+  /*
+  TODO:
+  Oddelit do jine servisy, a nejlepe smazat, Neni to vubec potreba. Tuto servisu nechat pouze na to
+  aby ziskala data ze serveru a vratila json data
+   */
   private tokenData: string;
   private parsedTokenData: any;
 
+  /*
+  TODO: Lepsi pouzit Subject.
+   V pripade ze by jsi mel inithodnotu tak BehaviorSubject
+   */
   @Output()
   tokenEmitter: EventEmitter<string> = new EventEmitter();
 
+  /*
+  TODO: doporucuji pojemnovat pouze http
+   */
   constructor(private httpService: HttpClient) {}
 
   getTokenData(): string {
@@ -23,6 +35,10 @@ export class TokenService {
     this.tokenData = data;
   }
 
+  /*
+  TODO:
+  tuto metodu pojmenuj pouze obtainToken a nech at vraci Observable<any>, subscribe vyresime jinde
+   */
   parseToken(): void {
     const tokenJson = JSON.stringify({
       token: this.tokenData,

@@ -7,6 +7,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SubmitComponent implements OnInit {
 
+  /*
+  TODO: jaky typ emitujeme?
+   */
   @Output() submitClicked = new EventEmitter<any>();
 
   constructor() { }

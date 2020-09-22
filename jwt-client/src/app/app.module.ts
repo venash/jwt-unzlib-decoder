@@ -13,6 +13,16 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
 
 @NgModule({
   declarations: [
+    /*
+    TODO:
+    v komponentech si zadefinuj index.ts do nej vytvor
+    export const components: Type<any> = [
+    ]
+
+    sem pak zadefinuj import * as fromComponents from './components'
+    a pak tu vloz ...fromComponents.components
+
+     */
     AppComponent,
       HeaderComponent,
       FooterComponent,
@@ -23,6 +33,10 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
    ],
   imports: [
     BrowserModule,
+    /*
+    TODO:
+    vytvor CoreModule, ktery bude obsahovat tyto dva nize uvedene
+     */
     FormsModule,
     HttpClientModule
   ],

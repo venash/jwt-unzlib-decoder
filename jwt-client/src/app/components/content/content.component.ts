@@ -8,6 +8,10 @@ import { TokenService } from '../../services/token/token.service';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })
+/*
+TODO: tohle bude container, kde vyresime ruzne chovani a logiku
+Tady si ulozime prichozi data a budeme je modifikovat
+ */
 export class ContentComponent implements OnInit {
 
   readonly titlePasteTokenComponent = TITLE_PASTE_TOKEN;
@@ -21,6 +25,10 @@ export class ContentComponent implements OnInit {
   }
 
   submitButtonClicked() {
+    /*
+    TODO: a tady udelame subscribe
+    rozsirime textareu tak aby brala input json data a ty nasetujeme odtud
+     */
     this.tokenService.parseToken();
   }
 

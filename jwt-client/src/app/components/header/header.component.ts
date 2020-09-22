@@ -9,6 +9,9 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  /*
+  TODO: pokud neni potreba tak smaz constructor i ngOnInit() vsude
+   */
   ngOnInit() {
   }
 
