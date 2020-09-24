@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Authority } from 'src/app/models/authority.model';
 import { Token } from 'src/app/models/token.model';
 
 @Injectable({
@@ -11,12 +12,29 @@ export class FilterService {
       return token;
     }
 
-    const authoritiesObject: any = token.authorities;
-    console.log(authoritiesObject);
+    filterData = filterData.toUpperCase();
 
-    // TO-DO create algorithm
-    // test
-    token.lastName = filterData;
-    return token;
+    const authoritiesObject: Authority[] = token.authorities;
+    const updatedAuthorities: Authority[] = [];
+
+    authoritiesObject.forEach((auth) => {
+      const updatedAuthoritiesObject = Object.assign({}, auth);
+      updatedAuthoritiesObject.permissions = [];
+
+      const permissions = auth.permissions;
+
+      permissions.forEach((permission) => {
+        if (permission.includes(filterData)) {
+          updatedAuthoritiesObject.permissions.push(permission);
+        }
+      });
+
+      if (updatedAuthoritiesObject.permissions.length !== 0) {
+        updatedAuthorities.push(updatedAuthoritiesObject);
+      }
+    });
+
+    console.log(updatedAuthorities);
+    return updatedAuthorities;
   }
 }

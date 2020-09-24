@@ -1,4 +1,4 @@
-import { Authorities } from './authorities.model';
+import { Authority } from './authority.model';
 
 export interface Token {
   lastName: string;
@@ -8,7 +8,7 @@ export interface Token {
   personalNumber: string;
   userName: string;
   title: string;
-  authorities?: Authorities[] | null;
+  authorities?: Authority[] | null;
   client_id: string;
   firstName: string;
   phone: string;
