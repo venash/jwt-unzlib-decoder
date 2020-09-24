@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 import { PLACEHOLDER_TEXT } from '../../utils';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent implements OnInit {
-
+export class FilterComponent {
   placeholderText = PLACEHOLDER_TEXT;
 
-  constructor() { }
+  @Output() valueChanged = new EventEmitter<string>();
 
-  ngOnInit() {
+  change(data: string) {
+    this.valueChanged.emit(data);
   }
-
 }

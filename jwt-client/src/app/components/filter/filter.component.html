@@ -2,7 +2,7 @@
 
   <form class="keyword-form mt-1">
     <label class="is-size-5 pr-2 pt-1">Keyword:</label>
-    <input class="input" placeholder={{placeholderText}}>
+    <input #filterInput class="input" placeholder={{placeholderText}} (input)=change(filterInput.value)>
   </form>
-  
+
 </div>

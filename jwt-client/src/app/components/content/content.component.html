@@ -6,8 +6,8 @@
   </div>
 
   <div class="column is-half">
-    <app-text-area [title]="titleResultComponent" [isReadonly]="true"></app-text-area>
-    <app-filter></app-filter>
+    <app-text-area [title]="titleResultComponent" [isReadonly]="true" [decodedToken]="decodedToken"></app-text-area>
+    <app-filter (valueChanged)="filterValueChanged($event)"></app-filter>
   </div>
 
 </div>

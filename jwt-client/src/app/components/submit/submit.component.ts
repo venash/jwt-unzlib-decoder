@@ -3,22 +3,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-submit',
   templateUrl: './submit.component.html',
-  styleUrls: ['./submit.component.scss']
+  styleUrls: ['./submit.component.scss'],
 })
 export class SubmitComponent implements OnInit {
+  @Output() submitClicked = new EventEmitter<void>();
 
-  /*
-  TODO: jaky typ emitujeme?
-   */
-  @Output() submitClicked = new EventEmitter<any>();
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   submit() {
     this.submitClicked.emit();
   }
-
 }
