@@ -33,8 +33,6 @@ export class FilterService {
         updatedAuthorities.push(updatedAuthoritiesObject);
       }
     });
-
-    console.log(updatedAuthorities);
     return updatedAuthorities;
   }
 }

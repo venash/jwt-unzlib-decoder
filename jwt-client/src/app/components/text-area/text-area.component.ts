@@ -14,6 +14,7 @@ export class TextAreaComponent {
   @Input() decodedToken: any;
   @Input() title: string;
   @Input() isReadonly: boolean;
+  @Input() isError = false;
 
   updateToken(data: string) {
     tokenStorage.tokenData = data;
