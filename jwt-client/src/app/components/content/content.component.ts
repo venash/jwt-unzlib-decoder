@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { TITLE_PASTE_TOKEN, TITLE_RESULT } from '../../utils';
 import { TokenService } from '../../services/token/token.service';
-import { tokenModel } from '../../models/token.model';
+import { tokenStorage } from '../../models/token.storage';
 import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
@@ -22,9 +22,9 @@ export class ContentComponent {
   ) {}
 
   submitButtonClicked() {
-    this.tokenService.obtainToken(tokenModel.tokenData).subscribe(
+    this.tokenService.obtainToken(tokenStorage.tokenData).subscribe(
       (decodedToken) => {
-        tokenModel.parsedToken = Object.assign({}, decodedToken);
+        tokenStorage.parsedToken = Object.assign({}, decodedToken);
         this.decodedToken = Object.assign({}, decodedToken);
       },
       (err) => {
@@ -36,7 +36,7 @@ export class ContentComponent {
   filterValueChanged(data: string) {
     this.decodedToken = this.filterService.filterParsedToken(
       data,
-      Object.assign({}, tokenModel.parsedToken)
+      Object.assign({}, tokenStorage.parsedToken)
     );
   }
 }

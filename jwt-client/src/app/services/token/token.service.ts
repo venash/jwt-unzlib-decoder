@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { SERVER_PATH } from '../../utils';
 import { Observable } from 'rxjs';
+import { Token } from 'src/app/models/token.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class TokenService {
   constructor(private http: HttpClient) {}
 
-  obtainToken(tokenData: string): Observable<any> {
+  obtainToken(tokenData: string): Observable<Token> {
     const tokenJson = JSON.stringify({
       token: tokenData,
     });
@@ -21,7 +22,7 @@ export class TokenService {
         if ('decodedToken' in data) {
           return JSON.parse(data.decodedToken);
         } else {
-          return data;
+          return undefined;
         }
       })
     );

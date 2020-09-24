@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Token } from 'src/app/models/token.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
-  filterParsedToken(filterData: string, token: any): any {
+  filterParsedToken(filterData: string, token: Token): any {
     // no filter selected, return whole token
-    if (filterData.length === 0 || !this.hasAuthorities(token)) {
+    if (filterData.length === 0 || !token.authorities) {
       return token;
     }
 
@@ -17,9 +18,5 @@ export class FilterService {
     // test
     token.lastName = filterData;
     return token;
-  }
-
-  private hasAuthorities(token: object): boolean {
-    return token.hasOwnProperty('authorities');
   }
 }

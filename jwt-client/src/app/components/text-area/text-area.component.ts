@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { PLACEHOLDER_TEXT } from '../../utils';
-import { tokenModel } from '../../models/token.model';
+import { tokenStorage } from '../../models/token.storage';
 
 @Component({
   selector: 'app-text-area',
@@ -16,6 +16,6 @@ export class TextAreaComponent {
   @Input() isReadonly: boolean;
 
   updateToken(data: string) {
-    tokenModel.tokenData = data;
+    tokenStorage.tokenData = data;
   }
 }
