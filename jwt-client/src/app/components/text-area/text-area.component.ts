@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { PLACEHOLDER_TEXT } from '../../utils';
 import { tokenStorage } from '../../models/token.storage';
@@ -15,8 +15,13 @@ export class TextAreaComponent {
   @Input() title: string;
   @Input() isReadonly: boolean;
   @Input() isError = false;
+  @Output() isErrorChange = new EventEmitter<boolean>();
 
   updateToken(data: string) {
     tokenStorage.tokenData = data;
+    if (this.isError) {
+      this.isError = false;
+      this.isErrorChange.emit(false);
+    }
   }
 }
