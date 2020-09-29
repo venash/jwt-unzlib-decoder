@@ -1,0 +1,13 @@
+<div class="columns pt-4 pb-4">
+
+  <div class="column is-half">
+    <app-text-area [title]="titlePasteTokenComponent" [isReadonly]="false" [(isError)]="hasError"></app-text-area>
+    <app-submit (submitClicked)="submitButtonClicked()"></app-submit>
+  </div>
+
+  <div class="column is-half">
+    <app-text-area [title]="titleResultComponent" [isReadonly]="true" [decodedToken]="decodedToken"></app-text-area>
+    <app-filter (valueChanged)="filterValueChanged($event)"></app-filter>
+  </div>
+
+</div>

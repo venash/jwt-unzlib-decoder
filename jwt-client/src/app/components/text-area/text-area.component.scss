@@ -1,0 +1,22 @@
+.textarea {
+  resize: none;
+  min-height: 75vh;
+}
+
+.area-error {
+  border: solid 1px red;
+}
+
+.info-div {
+  display: flex;
+}
+
+.title-text {
+  flex: 1;
+}
+
+.error-text {
+  color: red;
+  flex: 1;
+  text-align: right;
+}
